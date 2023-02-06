@@ -1,6 +1,10 @@
+import { useState } from "react";
 import "./App.css";
 
 function App() {
+  const [name, setName] = useState("")
+  const [datetime, setDatetime] = useState("")
+  const [description, setDescription] = useState("")
   return (
     <main>
       <h1>
@@ -8,11 +12,11 @@ function App() {
       </h1>
       <form>
         <div className="basic">
-          <input type="text" placeholder="+$200 Samsung TV" />
-          <input type="datetime-local" />
+          <input type="text" value={name} onChange={e=> setName(e.target.value)} placeholder="+$200 Samsung TV" />
+          <input type="datetime-local" value={datetime} onChange={e=> setDatetime(e.target.value)}/>
         </div>
         <div className="description">
-          <input type="text" placeholder="description" />
+          <input type="text" value={description} onChange={e=> setDescription(e.target.value)} placeholder="description" />
         </div>
         <button type="submit">Add New Transaction</button>
       </form>
