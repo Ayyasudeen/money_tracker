@@ -5,12 +5,17 @@ function App() {
   const [name, setName] = useState("")
   const [datetime, setDatetime] = useState("")
   const [description, setDescription] = useState("")
+
+  // takes all the data and sends it to the backend
+  function addNewTransaction() {
+    
+  }
   return (
     <main>
       <h1>
         $400 <span>.00</span>
       </h1>
-      <form>
+      <form onSubmit={addNewTransaction}>
         <div className="basic">
           <input type="text" value={name} onChange={e=> setName(e.target.value)} placeholder="+$200 Samsung TV" />
           <input type="datetime-local" value={datetime} onChange={e=> setDatetime(e.target.value)}/>
