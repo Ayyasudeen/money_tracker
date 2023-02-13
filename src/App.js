@@ -7,8 +7,19 @@ function App() {
   const [description, setDescription] = useState("")
 
   // takes all the data and sends it to the backend
-  function addNewTransaction() {
-    
+  function addNewTransaction(e) {
+    e.preventDefault();
+    const url = process.env.REACT_APP_API_URL + "/transaction";
+
+  fetch(url, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({name, datetime, description})
+  })
+      .then(response => response.json())
+      .then((data) => {
+        console.log('Success:', data);
+      })
   }
   return (
     <main>
