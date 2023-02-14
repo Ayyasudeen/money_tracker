@@ -21,7 +21,7 @@ app.post('/api_v1/transaction', async (req, res) => {
 
 app.get('/api_v1/transactions', async (req, res) => {
     await mongoose.connect(process.env.MONGO_URL)
-    const transactions = await Transaction.find(); // get all the collections from the Transaction
+    const transactions = await Transaction.find(); // get all the data from the Transaction collection
     res.json(transactions)
 })
 
