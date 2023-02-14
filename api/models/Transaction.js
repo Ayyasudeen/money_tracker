@@ -5,7 +5,7 @@ const { model, Schema } = mongoose;
 const TransactionSchema = new Schema({
     name: {type: String, required: true},
     description: {type: String, required: true},
-    date: {type: Date, required: true}
+    date: {type: Date, default: Date.now, required: true}
 });
 
 // define the model 
