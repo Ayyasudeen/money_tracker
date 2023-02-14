@@ -10,11 +10,12 @@ function App() {
   function addNewTransaction(e) {
     e.preventDefault();
     const url = process.env.REACT_APP_API_URL + "/transaction";
+    const date = new Date(datetime)
 
   fetch(url, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({name, datetime, description})
+      body: JSON.stringify({name, date, description})
   })
       .then(response => response.json())
       .then((data) => {
