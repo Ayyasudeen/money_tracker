@@ -62,7 +62,7 @@ function App() {
           </select>
         </div>
         <div className="description">
-          <input type="number" value={moneyValue} onChange={e=> setMoneyValue(e.target.value)} placeholder="$" />
+          <input type="number" value={moneyValue} pattern= "[0-9]" onChange={e=> setMoneyValue(e.target.value)} placeholder="$" />
         </div>
         <button type="submit">Add New Transaction</button>
       </form>
