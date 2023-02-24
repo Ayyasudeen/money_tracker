@@ -14,8 +14,8 @@ app.get('/api_v1/test', (req, res) => {
 
 app.post('/api_v1/transaction', async (req, res) => {
     await mongoose.connect(process.env.MONGO_URL)
-    const {name, description, datetime} = req.body;
-    const transaction = await Transaction.create({name, description, datetime}) // create a collection in the db using the Transaction Model
+    const {name, description, datetime, moneyvalue, transactype} = req.body;
+    const transaction = await Transaction.create({name, description, datetime, moneyvalue, transactype}) // create a collection in the db using the Transaction Model
     res.json(transaction)
   })
 

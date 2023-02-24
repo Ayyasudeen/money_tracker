@@ -5,7 +5,8 @@ function App() {
   const [name, setName] = useState("")
   const [datetime, setDatetime] = useState("")
   const [description, setDescription] = useState("")
-  const [moneyValue, setMoneyValue] = useState("")
+  const [moneyvalue, setMoneyvalue] = useState("")
+  const [transactype, setTransactype] = useState(1)
   const [transactionsData, setTransactionsData] = useState([])
 
   // takes all the data and sends it to the backend
@@ -17,7 +18,7 @@ function App() {
   fetch(url, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({name, date, description})
+      body: JSON.stringify({name, date, description, transactype, moneyvalue})
   })
       .then(response => response.json())
       .then((data) => {
@@ -56,13 +57,13 @@ function App() {
         </div>
         <div className="description">
           <input type="text" value={description} onChange={e=> setDescription(e.target.value)} placeholder="Description" />
-          <select>
+          <select value={transactype} onChange={e=> setTransactype(e.target.value)}>
             <option value={1}>Expense</option>
             <option value={0}>Income</option>
           </select>
         </div>
         <div className="description">
-          <input type="number" value={moneyValue} pattern= "[0-9]" onChange={e=> setMoneyValue(e.target.value)} placeholder="$" />
+          <input type="number" value={moneyvalue} pattern= "[0-9]" onChange={e=> setMoneyvalue(e.target.value)} placeholder="$" />
         </div>
         <button type="submit">Add New Transaction</button>
       </form>
