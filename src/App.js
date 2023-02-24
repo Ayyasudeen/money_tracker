@@ -8,6 +8,7 @@ function App() {
   const [moneyvalue, setMoneyvalue] = useState("")
   const [transactype, setTransactype] = useState(1)
   const [transactionsData, setTransactionsData] = useState([])
+  const [totalVal, setTotalVal] = useState()
 
   // takes all the data and sends it to the backend
   function addNewTransaction(e) {
@@ -38,6 +39,9 @@ function App() {
       .then((data) => {
         console.log('Success:', data);
         setTransactionsData(data)
+        let value = data.map(d=> Number(d.moneyvalue))
+        let totalValue = value.reduce((total, num) => total + num);
+        setTotalVal(totalValue)
       })
   }
 
@@ -49,7 +53,7 @@ function App() {
   return (
     <main>
       <h1>
-        $400 <span>.00</span>
+        ${totalVal} <span>.00</span>
       </h1>
       <form onSubmit={addNewTransaction}>
         <div className="basic">
