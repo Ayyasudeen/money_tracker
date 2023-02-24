@@ -23,6 +23,7 @@ function App() {
       .then(response => response.json())
       .then((data) => {
         console.log('Success:', data);
+        getAllTransactions()
       })
   }
 
@@ -68,36 +69,18 @@ function App() {
         <button type="submit">Add New Transaction</button>
       </form>
       <div className="transactions">
-        <div className="transaction">
+        {
+          transactionsData.map(data => <div key={data._id} className="transaction">
           <div className="left">
-            <div className="name">New Samsung Tv</div>
-            <div className="description">It was time for new TV</div>
+            <div className="name">{data.name}</div>
+            <div className="description">{data.description}</div>
           </div>
           <div className="right">
-            <div className="price">$500</div>
-            <div className="datetime">2023-01-29 13:58</div>
+            <div className="price">${data.moneyvalue}</div>
+            <div className="datetime">{data.date}</div>
           </div>
-        </div>
-        <div className="transaction">
-          <div className="left">
-            <div className="name">New Samsung Tv</div>
-            <div className="description">It was time for new TV</div>
-          </div>
-          <div className="right">
-            <div className="price">$500</div>
-            <div className="datetime">2023-01-29 13:58</div>
-          </div>
-        </div>
-        <div className="transaction">
-          <div className="left">
-            <div className="name">New Samsung Tv</div>
-            <div className="description">It was time for new TV</div>
-          </div>
-          <div className="right">
-            <div className="price">$500</div>
-            <div className="datetime">2023-01-29 13:58</div>
-          </div>
-        </div>
+        </div>)
+        }
       </div>
     </main>
   );
